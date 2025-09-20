@@ -25,7 +25,8 @@ function addTask() {
     span.addEventListener("click", () => {
         li.classList.toggle("line-through")
     })
-
+     li.appendChild(span);
+    li.appendChild(deleteButton);
 
 
 
