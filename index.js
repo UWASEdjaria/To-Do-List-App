@@ -32,6 +32,12 @@ function addTask() {
     taskList.appendChild(li);
     inputField.value = "";
 
+    
+inputField.addEventListener("keydown", (e) => {
+    if (e.key == "Enter") {
+        addTask()
+    }})
+
 
 
 
