@@ -9,4 +9,21 @@ function addTask() {
     if (TaskList == "") {
         alert("Task Name is Required")
         return;
-    }};
+    }
+    
+    const li = document.createElement("li");
+    const span = document.createElement("span");
+    const deleteButton = document.createElement("deleteButton");
+
+
+
+
+
+
+
+
+
+
+
+
+};
