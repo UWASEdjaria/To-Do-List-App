@@ -20,6 +20,12 @@ function addTask() {
     deleteButton.addEventListener("click", function () {
        TaskList.removeChild(li)
     })
+       span.textContent = textText;
+
+    span.addEventListener("click", () => {
+        li.classList.toggle("line-through")
+    })
+
 
 
 
