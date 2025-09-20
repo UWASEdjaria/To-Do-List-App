@@ -6,15 +6,15 @@
     <title>To Do App List</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-white flex justify-center items-center">
-    <div class=" mt-5 space-y-6  p-3 border border-2 rounded-lg gap-5 w-96 justify-between
+<body class="bg-purple-300 flex justify-center items-center">
+    <div class=" bg-white mt-5 space-y-6  p-3 border border-2 rounded-lg gap-5 w-96 justify-between
     shadow-lg ">
 
      <h1 id="head" class="font-bold hover:text-blue-300  text-lg text-blue-400 md:text-3xl lg:text-4xl text-center">To Do App List</h1>
         <div class="inline-flex gap-10 p-0">
    <input id="TaskInput"  type="text" placeholder="Add new task" class="border border-2 rounded-lg p-1 flex-1">
    
-   <button id="button" class=" rounded-lg p-2 bg-green-400 hover:text-green-200">Add</button>
+   <button onclick="addTask()" id="button" class=" rounded-lg p-2 bg-green-400 hover:text-green-200">Add</button>
    
      <ul id="TaskList"></ul>
     
