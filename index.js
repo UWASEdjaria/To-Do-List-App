@@ -28,6 +28,12 @@ function addTask() {
      li.appendChild(span);
     li.appendChild(deleteButton);
 
+    
+    taskList.appendChild(li);
+    inputField.value = "";
+
+
+
 
 
 
