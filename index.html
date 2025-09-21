@@ -20,6 +20,11 @@
     <div class="flex gap-2 w-full">
       <input id="TaskInput" type="text" placeholder="Add new task"
              class="border border-2 rounded-lg p-2 flex-1 dark:bg-gray-700 dark:text-white">
+      <select id="TaskCategory" class="border border-2 rounded-lg p-2 dark:bg-gray-700 dark:text-white">
+        <option value="Work">Work</option>
+        <option value="Personal">Personal</option>
+        <option value="School">School</option>
+      </select>
       <button onclick="addTask()" id="button"
               class="rounded-lg p-2 bg-green-400 hover:bg-green-500 text-white">
         Add
