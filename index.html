@@ -1,25 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Do App List</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do App List</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
 </head>
-<body class="bg-purple-300 flex justify-center items-center">
-    <div class=" bg-white mt-5 space-y-6  p-3 border border-2 rounded-lg gap-5 w-96 justify-between
-    shadow-lg ">
+<body class="bg-purple-300 dark:bg-gray-900 flex justify-center items-center min-h-screen">
+  <div class="bg-white dark:bg-gray-800 mt-5 space-y-6 p-5 border rounded-lg w-96 shadow-lg">
+    <h1 class="font-bold text-lg text-blue-400 md:text-3xl lg:text-4xl text-center dark:text-blue-200">
+      To Do App List
+    </h1>
 
-     <h1 id="head" class="font-bold hover:text-blue-300  text-lg text-blue-400 md:text-3xl lg:text-4xl text-center">To Do App List</h1>
-        <div class="inline-flex gap-10 p-0">
-   <input id="TaskInput"  type="text" placeholder="Add new task" class="border border-2 rounded-lg p-1 flex-1">
-   
-   <button onclick="addTask()" id="button" class=" rounded-lg p-2 bg-green-400 hover:text-green-200">Add</button>
-   
-     <ul id="TaskList"></ul>
-    
+    <div class="flex gap-2 w-full">
+      <input id="TaskInput" type="text" placeholder="Add new task"
+             class="border border-2 rounded-lg p-2 flex-1 dark:bg-gray-700 dark:text-white">
+      <button onclick="addTask()" id="button"
+              class="rounded-lg p-2 bg-green-400 hover:bg-green-500 text-white">
+        Add
+      </button>
     </div>
-    </div>
-    <script src="index.js"></script>
+
+    <ul id="TaskList" class="text-black dark:text-white"></ul>
+
+    <button id="deleteAllBtn" class="w-full bg-red-500 text-white p-2 rounded hover:bg-red-600">
+      Delete All
+    </button>
+
+    <button id="toggleMode" class="w-full mt-2 bg-gray-500 text-white p-2 rounded hover:bg-gray-600">
+      Toggle Dark/Light
+    </button>
+  </div>
+
+  <script src="index.js"></script>
 </body>
 </html>
