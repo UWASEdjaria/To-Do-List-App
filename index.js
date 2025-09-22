@@ -1,46 +1,64 @@
+const input = document.getElementById("inputTask");
+const addBtn = document.getElementById("addBtn");
+const ul = document.getElementById("taskList");
+const deleteBtn = document.getElementById("deleteBtn");
+const themeBtn = document.getElementById("themeBtn");
+const select = document.getElementById("taskCategory");
 
-const input = document.getElementById('TaskInput');
-const button = document.getElementById('button');
-const taskList = document.getElementById('TaskList');
-const deleteAllBtn = document.getElementById('deleteAllBtn');
-const darkModeBtn = document.getElementById('toggleMode');
-const body = document.body;
-const categorySelect = document.getElementById('TaskCategory');
+// Add new task
+addBtn.addEventListener("click", function (event) {
+  event.preventDefault(); // stop form refresh
 
-function addTask() {
-  const taskText = input.value.trim();
-  const category = categorySelect.value;
-  if (!taskText) return alert("Task Name is Required");
-  const li = document.createElement('li');
-  li.className = "flex justify-between items-center p-2 border-b border-gray-200 dark:border-gray-600";
-  const span = document.createElement("span");
-  span.textContent = taskText;
-  span.className = "cursor-pointer flex-1";
-  span.onclick = () => li.classList.toggle("line-through");
-  const catBadge = document.createElement('span');
-  catBadge.textContent = category;
-  catBadge.className = "ml-2 px-2 py-1 rounded text-xs font-semibold bg-blue-200 text-blue-800 dark:bg-blue-900 dark:text-blue-200";
-  const deleteBtn = document.createElement("button");
-  deleteBtn.textContent = "Delete";
-  deleteBtn.className = "ml-2 bg-red-500 text-white p-1 px-3 rounded-lg hover:bg-red-600";
-  deleteBtn.onclick = () => taskList.removeChild(li);
-  li.appendChild(span);
-  li.appendChild(catBadge);
-  li.appendChild(deleteBtn);
-  taskList.appendChild(li);
-  input.value = "";
-}
+  if (input.value.trim() === "") {
+    alert("Please enter your task");
+    return;
+  }
 
-input.onkeydown = e => e.key === "Enter" && addTask();
-button.onclick = addTask;
-deleteAllBtn.onclick = () => (taskList.innerHTML = '');
+  // create new li
+  const li = document.createElement("li");
+  li.className = "flex justify-between items-center bg-gray-100 p-2 rounded";
 
-function setTheme(dark) {
-  body.classList.toggle('dark', dark);
-  body.classList.toggle('bg-gray-900', dark);
-  body.classList.toggle('bg-purple-300', !dark);
-  darkModeBtn.textContent = dark ? "Light Mode" : "Dark Mode";
-  localStorage.setItem('theme', dark ? 'dark' : 'light');
-}
-setTheme(localStorage.getItem('theme') === 'dark');
-darkModeBtn.onclick = () => setTheme(!body.classList.contains('dark'));
+  // text of task
+  const taskText = document.createElement("span");
+  taskText.textContent = input.value;
+
+  // delete button for each task
+  const dlt = document.createElement("button");
+  dlt.textContent = "Delete";
+  dlt.className = "bg-red-500 text-white px-2 py-1 rounded ml-2";
+
+  // delete this specific task
+  dlt.addEventListener("click", function () {
+    li.remove();
+  });
+
+  li.appendChild(taskText);
+  li.appendChild(dlt);
+  ul.appendChild(li);
+
+  input.value = ""; // clear input
+});
+
+// Delete all tasks
+deleteBtn.addEventListener("click", function () {
+  ul.innerHTML = "";
+});
+
+// Dark/Light mode toggle
+themeBtn.addEventListener("click", function () {
+  if (themeBtn.textContent === "Dark Mode") {
+    themeBtn.textContent = "Light Mode";
+    input.classList.remove("text-black");
+    input.classList.add("text-white");
+    select.classList.remove("text-black");
+    select.classList.add("text-white");
+  } else {
+    themeBtn.textContent = "Dark Mode";
+    input.classList.remove("text-white");
+    input.classList.add("text-black");
+    select.classList.remove("text-white");
+    select.classList.add("text-black");
+  }
+  document.body.classList.toggle("bg-black");
+  document.body.classList.toggle("text-white");
+});
